@@ -7,18 +7,27 @@ Uses:
 - python3 textrefdoc.py filename [version]
 
 Output File Structure Example:
+
 Reference 1 (ESV); Reference 2; Reference 3 (NCV); ...
+
 (Contents of Reference 1 in ESV)
+
 \--------------------
+
 (Contents of Reference 1 in NIV)
 
 (Contents of Reference 2)
 
 (Contents of Reference 3 in NCV)
+
 \--------------------
+
 (Contents of Reference 3 in NIV)
+
 \====================
+
 Reference 4; Reference 5 ...
+
 (Contents of Reference 4)
 
 (Contents of Reference 5)
