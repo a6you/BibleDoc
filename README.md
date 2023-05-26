@@ -1,36 +1,23 @@
 # BibleDoc
 
 ## textrefdoc.py
-Takes in a file and optionally, a version to be used where the user does not provide a version for a reference. Currently uses NIV as the default version if no version is supplied. The program creates a file in the format outlined in the Output File Structure Example. References are first added in their requested version if applicable, and then the default version, which is currently NIV (i.e. Genesis 3:2 (ESV) will first be requested using ESV, and then NIV). The default version is currently unchangeable from the user's point of view. The requested reference and default reference, if applicable, are separated by a line of dashes, and each line of references is separated with a line of equals signs.
+Takes as input a text file that has lines which may or may not contain Bible verse references, and optionally, a version. See the Input File Structure Example or sample_input.txt for examples on how the file may be formatted.
 
+Produces as output text in the format shown in the Output File Structure Example. See sample_output.txt for the full version of the sample output. Text produced may be redirected to a file for later use.
+
+References are first added in their requested version if applicable, and then the default version, which is currently NIV (i.e. Genesis 3:2 (ESV) will first be requested using ESV, and then NIV). The default version is currently unchangeable from the user's point of view. The requested reference and default reference, if applicable, are separated by a line of dashes, and each line of references is separated with a line of equals signs.
+ 
 Uses:
 - python3 textrefdoc.py filename [version]
 
-Output File Structure Example:
+Input File Structure Example:
 
-Reference 1 (ESV); Reference 2; Reference 3 (NCV); ...
+<img src="https://github.com/a6you/BibleDoc/assets/53089551/fdbf75f9-d332-47fb-9633-b4fbee8cfdc8">
 
-(Contents of Reference 1 in ESV)
+Output Text Structure Example (cropped):
 
-\--------------------
+<img src="https://github.com/a6you/BibleDoc/assets/53089551/d0a83e28-4f6c-463b-8f4c-124497efecb7">
 
-(Contents of Reference 1 in NIV)
-
-(Contents of Reference 2)
-
-(Contents of Reference 3 in NCV)
-
-\--------------------
-
-(Contents of Reference 3 in NIV)
-
-\====================
-
-Reference 4; Reference 5 ...
-
-(Contents of Reference 4)
-
-(Contents of Reference 5)
 
 ## bibledoc.py
 *WIP*
