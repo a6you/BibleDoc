@@ -36,7 +36,7 @@ TokenizeLine(line)
 * Takes in a string and returns an array of tokens that format each Bible verse reference in the string.
 
 ## verse_requests.py
-get_requests(filename)
+GetRequests(filename)
 * Reads a file according to the Output File Structure Example above and formats Google Docs API requests based on the contents read.
 * If a line of references is reached, make a request that the text of the line be added as a header
 * If a line of reference contents or a line of dashes is reached, request to add those as simple document text
