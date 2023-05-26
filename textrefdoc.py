@@ -4,7 +4,7 @@ import os.path
 from biblereftokens import TokenizeLine
 from bgwrequests import BGWRequests
 
-def get_references(filename, default_version='NIV'):
+def GetReferences(filename, default_version='NIV'):
     file = open(filename, 'r')
     for line in file:
         print(line.rstrip(), end='')
@@ -40,9 +40,9 @@ def main():
     if not os.path.isfile(sys.argv[1]):
         exit()
     if len(sys.argv) == 3:
-        get_references(sys.argv[1], sys.argv[2])
+        GetReferences(sys.argv[1], sys.argv[2])
     elif len(sys.argv) == 2:
-        get_references(sys.argv[1])
+        GetReferences(sys.argv[1])
 
 if __name__ == '__main__':
     main()

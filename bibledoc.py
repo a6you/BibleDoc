@@ -9,7 +9,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from verse_requests import get_requests
+from verse_requests import GetRequests
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/drive.file',
@@ -67,7 +67,7 @@ def main():
 
             DOCUMENT_ID = doc.get('documentId')
 
-            requests = get_requests(filename)
+            requests = GetRequests(filename)
             result = service.documents().batchUpdate(documentId=DOCUMENT_ID, \
                                                     body={'requests': requests}) \
                                                         .execute()

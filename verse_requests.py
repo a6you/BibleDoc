@@ -4,7 +4,7 @@ Google Docs Python API currently does not have a way to add a horizontal line
 with JSON, so a line of dashes will have to do for now
 '''
 
-def createHeaderStyleRequest(index, length):
+def CreateHeaderStyleRequest(index, length):
     req = {
         "updateParagraphStyle": {
             "range": {
@@ -20,7 +20,7 @@ def createHeaderStyleRequest(index, length):
 
     return req
 
-def createTextRequest(index, text):
+def CreateTextRequest(index, text):
     req = {
         "insertText": {
           "text": text,
@@ -32,10 +32,10 @@ def createTextRequest(index, text):
 
     return req
 
-def createHorizontalLineRequest(index):
-    return createTextRequest(index, HORIZONTAL_LINE)
+def CreateHorizontalLineRequest(index):
+    return CreateTextRequest(index, HORIZONTAL_LINE)
 
-def createPageBreakRequest(index):
+def CreatePageBreakRequest(index):
     req = {
         "insertPageBreak": {
             "location": {
@@ -46,7 +46,7 @@ def createPageBreakRequest(index):
 
     return req
 
-def get_requests(filename):
+def GetRequests(filename):
     file = open(filename, 'r')
 
     index = 1 # Represents index in the Google Document
@@ -61,21 +61,21 @@ def get_requests(filename):
     # If a '--------------------\n' is reached, add a horizontal line
     for line in file:
         if line == '--------------------\n':
-            requests.append(createHorizontalLineRequest(index))
+            requests.append(CreateHorizontalLineRequest(index))
 
             index += 128
         elif line == '=========================\n':
-            requests.append(createPageBreakRequest(index))
+            requests.append(CreatePageBreakRequest(index))
             pageStart = True
 
             index += 2
         else:
             if pageStart:
-                requests.append(createTextRequest(index, line))
-                requests.append(createHeaderStyleRequest(index, len(line)))
+                requests.append(CreateTextRequest(index, line))
+                requests.append(CreateHeaderStyleRequest(index, len(line)))
                 pageStart = False
             else:
-                requests.append(createTextRequest(index, line))
+                requests.append(CreateTextRequest(index, line))
 
             index += len(line)
 
@@ -85,7 +85,7 @@ def get_requests(filename):
     return requests
 
 def main():
-    print(get_requests("sample.txt"))
+    print(GetRequests("sample.txt"))
 
 if __name__ == '__main__':
     main()
