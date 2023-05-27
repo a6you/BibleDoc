@@ -30,6 +30,7 @@ Uses:
 ## bgwrequests.py
 BGWRequests(reference, version)
 * Makes requests to www.biblegateway.com with the reference and version requested.
+* Returns a string with each of the verses in the reference on separate lines.
 
 ## biblereftokens.py
 TokenizeLine(line)
