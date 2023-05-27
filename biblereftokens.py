@@ -61,13 +61,9 @@ def TokenizeLine(line):
 
     return tokens
 
-def main():
+def tests():
     print(TokenizeLine('Genesis 9 Exodus 10-12 Leviticus 3:1  Numbers 1:1a'))
     print(TokenizeLine('Deuteronomy 22:5678 (ncv) Joshua 127:12 Judges 9:11-13 Ruth  7:2b-6'))
     print(TokenizeLine('1 Samuel 4:1a-2b 2 Samuel 3:3,5 (esv) 1 Kings 4:5,  8-9 2 Kings 24:22-24, 55b-63, 90a'))
     print(TokenizeLine('1 chronicles 3:3-4:1 (NIV)'))
-
     print(TokenizeLine('10. Matthew 25:40 (NRSV).'))
-
-if __name__ == '__main__':
-    main()

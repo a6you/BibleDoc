@@ -27,8 +27,5 @@ def BGWRequests(reference, version):
 
     return full_text
 
-def main():
+def tests():
     BGWRequests('2 Samuel 3:3,5', 'NIV')
-
-if __name__ == '__main__':
-    main()

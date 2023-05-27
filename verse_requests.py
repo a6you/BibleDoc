@@ -83,9 +83,3 @@ def GetRequests(filename):
     file.close()
 
     return requests
-
-def main():
-    print(GetRequests("sample.txt"))
-
-if __name__ == '__main__':
-    main()
