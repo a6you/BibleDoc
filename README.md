@@ -1,5 +1,19 @@
 # BibleDoc
+A tool to help make Bible reading, Christian book studies, and the like easier.
+Write out all the Bible verse references you want to use in one file, and get them all in either a text file or a Google Doc so you can share it with others.
+Text File Tool: textrefdoc.py
+Google Docs Tool: bibledoc.py
 
+# Installation
+1. Install python for your machine.
+
+At this point, you can use the Text File tool. If you wish to use the Google Docs tool, do the following:
+
+2. Install the following modules with ./module_install.sh (enabling execute permissions for it as necessary)
+3. Set up a Google Cloud Console for this Google API app.
+4. Download the credentials.json for the app and place it in the project directory.
+
+Now you should be able to use both tools.
 ## textrefdoc.py
 Takes as input a text file that has lines which may or may not contain Bible verse references, and optionally, a version. See the Input File Structure Example or sample_input.txt for examples on how the file may be formatted.
 
