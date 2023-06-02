@@ -1,17 +1,22 @@
 # BibleDoc
 A tool to help make Bible reading, Christian book studies, and the like easier.
+
 Write out all the Bible verse references you want to use in one file, and get them all in either a text file or a Google Doc so you can share it with others.
-Text File Tool: textrefdoc.py
-Google Docs Tool: bibledoc.py
+
+Text File Tool: ```textrefdoc.py```
+
+Google Docs Tool: ```bibledoc.py```
 
 # Installation
-1. Install python for your machine.
+1. Run ```git clone https://github.com/a6you/BibleDoc.git```.
+2. Install python for your machine: https://www.python.org/downloads/.
 
-At this point, you can use the Text File tool. If you wish to use the Google Docs tool, do the following:
+At this point, you can use the Text File Tool. If you wish to use the Google Docs Tool, do the following:
 
-2. Install the following modules with ./module_install.sh (enabling execute permissions for it as necessary)
-3. Set up a Google Cloud Console for this Google API app.
-4. Download the credentials.json for the app and place it in the project directory.
+3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x ./module_install```.
+4. Run this command to run the script: ```./module_install.sh```.
+5. Set up a Google Cloud Console for this Google API app. (WRITE INSTRUCTIONS FOR SETTING THIS UP, PUT IT IN A SECTION CALLED SOMETHING LIKE GOOGLE CLOUD CONSOLE SETUP BELOW THE OTHER FILE DESCRIPTIONS AND THEN LINK FROM THIS STEP TO THAT SECTION AND THEN LINK FROM THAT SECTION BACK TO THIS STEP)
+6. Download the ```credentials.json``` for the app and place it in the project directory.
 
 Now you should be able to use both tools.
 ## textrefdoc.py
@@ -22,7 +27,10 @@ Produces as output text in the format shown in the Output File Structure Example
 References are first added in their requested version if applicable, and then the default version, which is currently NIV (i.e. Genesis 3:2 (ESV) will first be requested using ESV, and then NIV). The default version is currently unchangeable from the user's point of view. The requested reference and default reference, if applicable, are separated by a line of dashes, and each line of references is separated with a line of equals signs.
  
 Uses:
-- python3 textrefdoc.py filename [version]
+
+```
+python3 textrefdoc.py filename [version]
+```
 
 Input File Structure Example:
 
@@ -39,19 +47,22 @@ Accepts a file and a desired Google document title (either on the command line o
 Each line of the file is added sequentially to the document as the header of a section, and all the Bible verse references in the line are placed directly below it in the same section.
 
 Uses:
-- python3 bibledoc.py [filename] [document_title]
+
+```
+python3 bibledoc.py [filename] [document_title]
+```
 
 ## bgwrequests.py
-BGWRequests(reference, version)
+```BGWRequests(reference, version)```
 * Makes requests to www.biblegateway.com with the reference and version requested.
 * Returns a string with each of the verses in the reference on separate lines.
 
 ## biblereftokens.py
-TokenizeLine(line)
+```TokenizeLine(line)```
 * Takes in a string and returns an array of tokens that format each Bible verse reference in the string.
 
 ## verse_requests.py
-GetRequests(filename)
+```GetRequests(filename)```
 * Reads a file according to the Output File Structure Example above and formats Google Docs API requests based on the contents read.
 * If a line of references is reached, make a request that the text of the line be added as a header
 * If a line of reference contents or a line of dashes is reached, request to add those as simple document text
