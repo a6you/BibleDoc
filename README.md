@@ -8,15 +8,16 @@ Text File Tool: ```textrefdoc.py```
 Google Docs Tool: ```bibledoc.py```
 
 # Installation
-1. Run ```git clone https://github.com/a6you/BibleDoc.git```.
-2. Install python for your machine: https://www.python.org/downloads/.
+1. Run ```git clone https://github.com/a6you/BibleDoc.git``` and go into the project directory.
+2. Install python3 for your machine: https://www.python.org/downloads/.
 
 At this point, you can use the Text File Tool. If you wish to use the Google Docs Tool, do the following:
 
 3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x ./module_install```.
 4. Run this command to run the script: ```./module_install.sh```.
-5. Set up a Google Cloud Console for this Google API app. (WRITE INSTRUCTIONS FOR SETTING THIS UP, PUT IT IN A SECTION CALLED SOMETHING LIKE GOOGLE CLOUD CONSOLE SETUP BELOW THE OTHER FILE DESCRIPTIONS AND THEN LINK FROM THIS STEP TO THAT SECTION AND THEN LINK FROM THAT SECTION BACK TO THIS STEP)
-6. Download the ```credentials.json``` for the app and place it in the project directory.
+5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
+6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
+7. Create credentials for your app, which you will download as a ```credentials.json``` file and move to your project directory: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
 
 Now you should be able to use both tools.
 ## textrefdoc.py
@@ -42,7 +43,6 @@ Output Text Structure Example (cropped):
 
 
 ## bibledoc.py
-*WIP*
 Accepts a file and a desired Google document title (either on the command line or via user input) and creates a Google document.
 Each line of the file is added sequentially to the document as the header of a section, and all the Bible verse references in the line are placed directly below it in the same section.
 
