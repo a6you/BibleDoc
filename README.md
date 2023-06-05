@@ -10,8 +10,6 @@ Google Docs Tool: ```bibledoc.py```
 # Installation
 1. Run ```git clone https://github.com/a6you/BibleDoc.git``` and go into the project directory.
 2. Install python3 for your machine: https://www.python.org/downloads/.
-1. Run ```git clone https://github.com/a6you/BibleDoc.git``` and go into the project directory.
-2. Install python3 for your machine: https://www.python.org/downloads/.
 
 At this point, you can use the Text File Tool. If you wish to use the Google Docs Tool, do the following:
 
