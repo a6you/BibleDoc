@@ -13,7 +13,7 @@ Google Docs Tool: ```bibledoc.py```
 
 At this point, you can use the Text File Tool. If you wish to use the Google Docs Tool, do the following:
 
-3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x ./module_install```.
+3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x module_install```.
 4. Run this command to run the script: ```./module_install.sh```.
 5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
 6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
