@@ -10,11 +10,16 @@ Google Docs Tool: ```bibledoc.py```
 # Installation
 1. Run ```git clone https://github.com/a6you/BibleDoc.git``` and go into the project directory.
 2. Install python3 for your machine: https://www.python.org/downloads/.
+1. Run ```git clone https://github.com/a6you/BibleDoc.git``` and go into the project directory.
+2. Install python3 for your machine: https://www.python.org/downloads/.
 
 At this point, you can use the Text File Tool. If you wish to use the Google Docs Tool, do the following:
 
-3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x module_install```.
+3. Enable execute permissions for the module installation script ```module_install.sh``` with ```chmod u+x module_install.sh```.
 4. Run this command to run the script: ```./module_install.sh```.
+5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
+6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
+7. Create credentials for your app, which you will download as a ```credentials.json``` file and move to your project directory: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
 5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
 6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
 7. Create credentials for your app, which you will download as a ```credentials.json``` file and move to your project directory: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
