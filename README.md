@@ -17,10 +17,9 @@ At this point, you can use the Text File Tool. If you wish to use the Google Doc
 4. Run this command to run the script: ```./module_install.sh```.
 5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
 6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
-7. Create credentials for your app, which you will download as a ```credentials.json``` file and move to your project directory: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
-5. Set up a Google Cloud project for the app: https://developers.google.com/workspace/guides/create-project.
-6. Enable the Google Docs API for your project: https://developers.google.com/workspace/guides/enable-apis.
-7. Create credentials for your app, which you will download as a ```credentials.json``` file and move to your project directory: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
+7. Create credentials for your app, which you will download as a JSON file and move to your project directory. You will be prompted to set up your OAuth consent screen first. There will be several sections to complete: In **OAuth consent screen**, fill out the required fields and add your email as a developer contact. Skip the **Scopes** and **Test users** sections. Now in the **Summary**, click "Back To Dashboard". Under **Publishing status**, click "Publish App" and confirm. Now follow the steps outlined here under **Authorize credentials for a desktop application**: https://developers.google.com/docs/api/quickstart/python#authorize_credentials_for_a_desktop_application.
+8. The previous step had you download a JSON file. Rename it to ```credentials.json``` and place it in your project directory.
+9. Go to https://console.cloud.google.com/apis/credentials and select your project if it is not already selected. Click on the **OAuth 2.0 Client ID** that you created in step 7. Under **Authorized redirect URIs** in the text box just above the **Add URI** button, paste **http://localhost/**. Click the blue **Save** button. You may need to wait up to 5 minutes for the change to take effect.
 
 Now you should be able to use both tools.
 ## textrefdoc.py
