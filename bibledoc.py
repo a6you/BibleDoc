@@ -18,9 +18,24 @@ SCOPES = ['https://www.googleapis.com/auth/drive.file',
 DEFAULT_TITLE = "Untitled Document"
 
 def main():
-    """Shows basic usage of the Docs API.
-    Prints the title of a sample document.
-    """
+    if len(sys.argv) > 3:
+        usage_message = "Command line input: python3 bibledoc.py filename [document_title]\n"
+        print(usage_message, file=sys.stderr)
+        return
+    elif len(sys.argv) == 2:
+        filename = sys.argv[1]
+        document_title = DEFAULT_TITLE
+    elif len(sys.argv) == 3:
+        filename = sys.argv[1]
+        document_title = sys.argv[2]
+    else:
+        filename = input("Enter the name of the file you want to create your document from: ")
+
+    if os.path.isfile(filename):
+        document_title = input("Enter your Google document's title: ")
+    else:
+        print("Please use a valid file name")
+
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -41,41 +56,23 @@ def main():
 
     try:
         service = build('docs', 'v1', credentials=creds)
-        if len(sys.argv) > 3:
-            usage_message = "Command line input: python3 bibledoc.py filename document_title\nCommand line input (no document title): python3 bibledoc.py filename\nUser input: python3 bibledoc.py"
-            print(usage_message, file=sys.stderr)
-            return
-        elif len(sys.argv) == 2:
-            filename = sys.argv[1]
-            document_title = DEFAULT_TITLE
-        elif len(sys.argv) == 3:
-            filename = sys.argv[1]
-            document_title = sys.argv[2]
-        else:
-            filename = input("Enter the name of the file you want to create your document from: ")
 
-        if os.path.isfile(filename):
-            document_title = input("Enter your Google document's title: ")
+        body = {
+            'title': document_title
+        }
 
-            body = {
-                'title': document_title
-            }
+        doc = service.documents() \
+            .create(body=body).execute()
+        print(f"Created document with title: {doc.get('title')}")
 
-            doc = service.documents() \
-                .create(body=body).execute()
-            print(f"Created document with title: {doc.get('title')}")
+        DOCUMENT_ID = doc.get('documentId')
 
-            DOCUMENT_ID = doc.get('documentId')
-
-            requests = GetRequests(filename)
-            result = service.documents().batchUpdate(documentId=DOCUMENT_ID, \
-                                                    body={'requests': requests}) \
-                                                        .execute()
-        else:
-            print("Please use a valid file name")
+        requests = GetRequests(filename)
+        result = service.documents().batchUpdate(documentId=DOCUMENT_ID, \
+                                                body={'requests': requests}) \
+                                                    .execute()
     except HttpError as err:
         print(err)
-
 
 if __name__ == '__main__':
     main()

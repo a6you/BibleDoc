@@ -5,10 +5,12 @@ from biblereftokens import TokenizeLine
 from bgwrequests import BGWRequests
 
 def GetReferences(filename, default_version='NIV'):
+    output = ''
+
     file = open(filename, 'r')
     for line in file:
-        print(line.rstrip(), end='')
-        # pass lines to logic
+        output = output + line.rstrip()
+        # Pass lines to logic
         tokens = TokenizeLine(line)
         for book, verses, version in tokens:
 
@@ -26,23 +28,26 @@ def GetReferences(filename, default_version='NIV'):
             if version and version != default_version:
                 req = BGWRequests(reference, version)
                 if req:
-                    print(req)
-                    print('--------------------', end='')
+                    output = output + req + '\n'
+                    output = output + '--------------------' + '\n'
             req = BGWRequests(reference, default_version)
             if req:
-                print(req)
-        print('\n=========================')
+                output = output + req + '\n'
+        output = output + '\n=========================' + '\n'
+
+    return output
 
 def main():
     if len(sys.argv) > 3:
         print('Usage: textrefdoc.py filename [version]')
-        exit()
+        return
     if not os.path.isfile(sys.argv[1]):
-        exit()
+        print('Please use a valid filename')
+        return
     if len(sys.argv) == 3:
-        GetReferences(sys.argv[1], sys.argv[2])
+        print(GetReferences(sys.argv[1], sys.argv[2]))
     elif len(sys.argv) == 2:
-        GetReferences(sys.argv[1])
+        print(GetReferences(sys.argv[1]))
 
 if __name__ == '__main__':
     main()
