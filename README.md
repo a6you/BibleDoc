@@ -45,7 +45,7 @@ Output Text Structure Example (cropped):
 
 
 ## bibledoc.py
-Accepts a file and a desired Google document title (either on the command line or via user input) and creates a Google document.
+Accepts a file and a desired Google document title (either on the command line or via user input) and creates a Google document in a user's Drive homepage.
 Each line of the file is added sequentially to the document as the header of a section, and all the Bible verse references in the line are placed directly below it in the same section.
 
 Uses:
