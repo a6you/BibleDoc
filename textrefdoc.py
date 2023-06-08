@@ -29,7 +29,7 @@ def GetReferences(filename, default_version='NIV'):
                 req = BGWRequests(reference, version)
                 if req:
                     output = output + req + '\n'
-                    output = output + '--------------------' + '\n'
+                    output = output + '--------------------'
             req = BGWRequests(reference, default_version)
             if req:
                 output = output + req + '\n'
