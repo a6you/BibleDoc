@@ -66,7 +66,7 @@ def main():
         print(f"Created document with title: {doc.get('title')}")
 
         DOCUMENT_ID = doc.get('documentId')
-
+        print(DOCUMENT_ID)
         requests = GetRequests(filename)
         result = service.documents().batchUpdate(documentId=DOCUMENT_ID, \
                                                 body={'requests': requests}) \

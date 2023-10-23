@@ -63,7 +63,7 @@ def GetRequests(filename):
         if line == '--------------------\n':
             requests.append(CreateHorizontalLineRequest(index))
 
-            index += 128
+            index += 127
         elif line == '=========================\n':
             requests.append(CreatePageBreakRequest(index))
             pageStart = True
