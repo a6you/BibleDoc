@@ -27,29 +27,26 @@ versionsRE = versionsRE[:-1]
 verseRE = re.compile(
     r"""
         (
-            (?: # A range of verses over multiple chapters i.e. 3:2-5,4:8,10-12
-                (?:\d+)
-                :
-                (?:
-                    (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)
-                    (?:
-                        (?:,\s*)
-                        (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)?
-                    )*
-                )?
-            )
             (?:
-                (?:,\s*)
+            # Handles 17:4, 16:28, 26:20, 25:9, 20:19, 3:2-5, 4:8, 10-12
+            # 3:2-5, 4:8, 10-12
+            # 24:22-24, 55b-63, 90a
                 (?:\d+)
                 :
+                (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)
                 (?:
-                    (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)
+                    (?:,\s*)
                     (?:
-                        (?:,\s*)
-                        (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)?
-                    )*
-                )?
-            )+
+                        (?:\d+[a-z]?-\d+[a-z]?)
+                        |
+                        (?:\d+[a-z]+)
+                        |
+                        (?:\d+)
+                        :
+                        (?:\d+[a-z]?-\d+[a-z]?|\d+[a-z]?)
+                    )
+                )
+            )
             |
             (?: # A range of verses across multiple chapters i.e. 18:2-19:3
                 (?:\d+):(?:(?:\d+[a-z]?))
@@ -85,9 +82,13 @@ def TokenizeLine(line):
     return tokens
 
 def tests():
-    print(TokenizeLine('Genesis 9 Exodus 10-12 Leviticus 3:1  Numbers 1:1a'))
-    print(TokenizeLine('Deuteronomy 22:5678 (ncv) Joshua 127:12 Judges 9:11-13 Ruth  7:2b-6'))
-    print(TokenizeLine('1 Samuel 4:1a-2b 2 Samuel 3:3,5,7 (esv) 1 Kings 4:5,  8-9 2 Kings 24:22-24, 55b-63, 90a'))
-    print(TokenizeLine('1 chronicles 3:3-4:1 (NIV)'))
-    print(TokenizeLine('10. Matthew 25:40 (NRSV).'))
-    print(TokenizeLine('Matt. 3:2-5,4:8,10-12'))
+    assert TokenizeLine('Genesis 9 Exodus 10-12 Leviticus 3:1  Numbers 1:1a') == [('Genesis', '9', ''), ('Exodus', '10-12', ''), ('Leviticus', '3:1', ''), ('Numbers', '1:1a', '')]
+    assert TokenizeLine('Deuteronomy 22:5678 (ncv) Joshua 127:12 Judges 9:11-13 Ruth  7:2b-6, 7b') == [('Deuteronomy', '22:5678', 'ncv'), ('Joshua', '127:12', ''), ('Judges', '9:11-13', ''), ('Ruth', '7:2b-6, 7b', '')]
+    assert TokenizeLine('1 Samuel 4:1a-2b 2 Samuel 3:3,5,7 (esv) 1 Kings 4:5,  8-9 2 Kings 24:22-24, 55b-63, 90a') == [('1 Samuel', '4:1a-2b', ''), ('2 Samuel', '3:3,5,7', 'esv'), ('1 Kings', '4:5,  8-9', ''), ('2 Kings', '24:22-24, 55b-63', '')]
+    assert TokenizeLine('1 chronicles 3:3-4:1 (NIV)') == [('1 chronicles', '3:3-4:1', 'NIV')]
+    assert TokenizeLine('10. Matthew 25:40 (NRSV).') == [('Matthew', '25:40', 'NRSV')]
+    assert TokenizeLine('Matt. 3:2-5, 4:8, 10-12') == [('Matt', '3:2-5, 4:8', '')]
+    assert TokenizeLine('Proverbs. 17:4, 16:28, 26:20, 25:9, 20:19.') == [('Proverbs', '17:4, 16:28', '')]
+    assert TokenizeLine('Proverbs. 18:2-19:3') == [('Proverbs', '18:2-19:3', '')]
+    # TODO: Cover this test case: print(TokenizeLine('Titus 2:15-3:2, 10-11'))
+# tests()
